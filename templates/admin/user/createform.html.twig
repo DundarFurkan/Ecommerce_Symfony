@@ -1,0 +1,84 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Üye Ekleme {% endblock %}
+
+{% block content %}
+    <!-- /.content -->
+    <div class="card-header"><h3>ÜYE EKLEME</h3></div>
+        <div class="card-body card-block">
+            <form action="#" method="post" class="form-horizontal">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                        <input type="text" id="username" name="user[name]" placeholder="Username" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                        <input type="email" id="email" name="user[email]" placeholder="Email" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                        <input type="password" id="password" name="user[password]" placeholder="Password" class="form-control">
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                        <input type="address" id="address" name="user[address]" placeholder="address" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                        <input type="phone" id="address" name="user[phone]" placeholder="phone" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                        <input type="city" id="city" name="user[city]" placeholder="city" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-1"><label  class=" form-control-label">Roles</label></div>
+                    <div class="col-12 col-md-5">
+                        <select name="user[roles]" id="selectSm" class="form-control-sm form-control">
+                            <option value="0">Please select</option>
+                            <option value="ROLE_ADMIN">ROLE_ADMIN</option>
+                            <option value="ROLE_USER">ROLE_USER</option>
+                         </select>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-1"><label for="selectSm" class=" form-control-label">Status</label></div>
+                    <div class="col-12 col-md-5">
+                        <select name="user[status]" id="selectSm" class="form-control-sm form-control">
+                            <option value="0">Please select</option>
+                            <option value="TRUE">TRUE</option>
+                            <option value="FALSE">FALSE</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">Submit</button></div>
+
+
+
+
+
+            </form>
+
+    </div>
+
+{% endblock %}

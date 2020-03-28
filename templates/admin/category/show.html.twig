@@ -1,0 +1,49 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %} Kategori Listesi {% endblock %}
+
+{% block content %}
+    <!-- Content -->
+    <div class="content">
+        <font size=5>Kategori Detay Sayfası</font>
+
+        <br><br>
+        <div class="content">
+            <table class="table ">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ category.id }}</td>
+                </tr>
+                <tr>
+                    <th>Parentid</th>
+                    <td>{{ category.parentid }}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td>{{ category.title }}</td>
+                </tr>
+                <tr>
+                    <th>Keywords</th>
+                    <td>{{ category.keywords }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ category.description }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ category.status }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <a href="{{ path('admin_category_index') }}" class="btn btn-info btn-sm">Listeye Dön</a>
+
+            <a href="{{ path('admin_category_edit', {'id': category.id,'pid': category.id}) }}" class="btn btn-primary btn-sm">Düzenle</a>
+
+            <div class="pull-right"> {{ include('admin/category/_delete_form.html.twig') }}</div>
+        </div>
+    </div>
+    <!-- /.content -->
+{% endblock %}

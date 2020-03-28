@@ -1,0 +1,41 @@
+<div class="span9">
+    <div class="well well-small">
+       <H4>ÜRÜNLERİMİZ</H4>
+    </div>
+
+    <div>
+
+        <ul class="thumbnails">
+            {% for pr in products %}
+                <form name="shopcart" class="form-horizontal qtyFrm" action="{{ path ('shopcart_new') }}" method="post">
+                    <li class="span3">
+                        <div class="thumbnail">
+                            <a  href="{{ path('product_detail',{'id': pr.id}) }}"><img src="{{ asset('uploads') }}/images/{{ pr.image }}" alt=""/></a>
+                            <div class="caption">
+                                <h5>{{ pr.title }}</h5>
+                                <p>
+                                    {{ pr.description }}
+                                </p>
+                                <input type="hidden" name="shopcart[quantity]" class="span1" placeholder="Adet." value="1" max="{{ pr.amount }}"/>
+                                <input type="hidden" name="shopcart[productid]"  value="{{ pr.id }}"/>
+
+                                <input type="hidden" name="token" value="{{ csrf_token('add.item') }}">
+
+
+                                <h4 style="text-align:center"><a class="btn" href="product_details.html">
+                                        <i class="icon-zoom-in"></i></a><button type="submit" class="btn"> Add to cart <i class=" icon-shopping-cart"></i></button></a>
+                                    <a class="btn btn-primary" href="#">{{ pr.sprice }}</a></h4>
+                            </div>
+                        </div>
+                    </li>
+                </form>
+
+
+            {% endfor %}
+
+
+        </ul>
+
+    </div>
+</div>
+</div></div></div>

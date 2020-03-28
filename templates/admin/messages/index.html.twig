@@ -1,0 +1,53 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %} Mesaj Listesi {% endblock %}
+
+{% block content %}
+<!-- Content -->
+<div class="content">
+    <font size=6>Mesaj Listesi</font>
+
+    <br><br>
+    <div class="table-stats order-table ov-h" align="left">
+        <table class="table " >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Comment</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for message in messages %}
+            <tr>
+                <td>{{ message.id }}</td>
+                <td>{{ message.name }}</td>
+                <td>{{ message.email }}</td>
+                <td>{{ message.subject }}</td>
+                <td>{{ message.message }}</td>
+                <td>{{ message.comment }}</td>
+                <td>{{ message.status }}</td>
+                <td>
+                    <a href="javascript:openWin('{{ path('admin_messages_show', {'id': message.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollBars=no,resizable=no,width=600,height=500');">
+                    Mesajı Oku</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_messages_new') }}">Create new</a>
+    </div>
+</div>
+    <!-- /.content -->
+{% endblock %}
+

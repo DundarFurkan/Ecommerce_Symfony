@@ -1,0 +1,64 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Shopcart {% endblock %}
+
+{% block sidebar %} {% include ('home/_usersidebar.html.twig') %} {% endblock %}
+{% block body %}
+
+    <div class="span9">
+        <ul class="breadcrumb">
+            <li><a href="{{ path('home') }}">Anasayfa</a> <span class="divider">/</span></li>
+            <li><a href="#">Sepetim</a> <span class="divider">/</span></li>
+            <li class="active">Ürün Detayı</li>
+        </ul>
+    </div>
+
+    <div class="row">
+
+        <div class="span9">
+            <h3>Sepetim</h3>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Ürün Adı</th>
+                    <th>Satış Fiyatı</th>
+                    <th>Miktarı</th>
+                    <th>Toplam</th>
+                    <th>Düzenle</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% set total=0 %}
+                {% for shopcart in shopcarts %}
+                    <tr>
+                        <td>{{ shopcart.id }}</td>
+                        <td>{{ shopcart.title }}</td>
+                        <td>{{ shopcart.sprice }}</td>
+                        <td>{{ shopcart.quantity }}</td>
+                        <td>{{  shopcart.quantity * shopcart.sprice}} </td>
+                        <td><a href="{{ path('shopcart_del',{'id':shopcart.id})}}" onclick="return confirm('Silinecek Emin Misin?');"
+                               class="btn btn-danger btn-xs">Sil</a> </td>
+
+                    </tr>
+                    {% set total=total +(shopcart.quantity * shopcart.sprice) %}
+                {% else %}
+                    <tr>
+                        <td colspan="5">Shopcart is empty</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5"><b> Toplam Alışveriş Tutarı : {{ total }} TL</b> <br>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <a href="{{ path ('orders_new') }}" class="btn btn-large btn-success"> Ürünleri Satın Al</a>
+
+        </div>
+    </div>
+
+    </div>
+    </div> </div> </div>
+{% endblock %}

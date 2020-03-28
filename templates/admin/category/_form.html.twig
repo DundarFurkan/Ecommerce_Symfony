@@ -1,0 +1,72 @@
+
+<form action="" method="post" class="form-horizontal">
+    Main Category:
+    <div class="form-group">
+        <div class="input-group" >
+            <div class="input-group-addon" ><i class="fa fa-user"></i></div>
+
+            <select name="category[parentid]"  class="form-control">
+
+                {% if category.parentid %}
+                    <option value="{{ category.parentid }}">{{ category.parentid}}</option>
+                {% else %}
+                    <option value="0"></option>
+                {% endif %}
+
+
+                {% for cat in catlist  %}
+                    <option value="{{ cat.id }}">{{ cat.title}}</option>
+                {% endfor %}
+
+            </select>
+        </div>
+    </div>
+
+    Title:
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+
+            <input type="text" name="category[title]"   value="{{ category.title }}" placeholder="Title" class="form-control">
+        </div>
+    </div>
+    Keywords:
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+            <input type="text"  name="category[keywords]"  value="{{ category.keywords }}" placeholder="Keywords" class="form-control">
+        </div>
+    </div>
+    Description:
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+            <input type="text" name="category[description]"  value="{{ category.description }}" placeholder="Description" class="form-control">
+        </div>
+
+
+    </div>
+
+
+    Status:
+    <div class="form-group">
+        <div class="input-group" >
+            <div class="input-group-addon" ><i class="fa fa-asterisk"></i></div>
+
+            <select name="category[status]"  class="form-control">
+                <option >{{ category.status }}</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">Submit</button></div>
+
+
+
+
+
+</form>

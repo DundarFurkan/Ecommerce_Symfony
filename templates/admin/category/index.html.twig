@@ -1,0 +1,50 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %} Kategori Listesi {% endblock %}
+
+{% block content %}
+<!-- Content -->
+<div class="content">
+    <font size=6>Kategori Listesi</font>
+    <div class="pull-right"> <a href="{{ path('admin_category_new') }}" class="btn btn-success btn-sm">Kategori Ekleme</a></div>
+        <br><br>
+        <div class="table-stats order-table ov-h">
+            <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Parentid</th>
+                <th>Title</th>
+                <th>Keywords</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Show</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.parentid }}</td>
+                <td>{{ category.title }}</td>
+                <td>{{ category.keywords }}</td>
+                <td>{{ category.description }}</td>
+                <td>{{ category.status }}</td>
+                <td><a href="{{ path('admin_category_show', {'id': category.id}) }}"class="btn btn-success btn-sm">show</a></td>
+                <td> <a href="{{ path('admin_category_edit', {'id': category.id, 'pid':category.parentid}) }}" class="btn btn-warning btn-sm">edit</a></td>
+                <td>{{ include('admin/category/_delete_form.html.twig') }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        </div>
+    </div>
+    <!-- /.content -->
+    {% endblock %}

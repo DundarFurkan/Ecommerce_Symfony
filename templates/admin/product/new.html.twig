@@ -1,0 +1,21 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %} Ürün Ekleme {% endblock %}
+
+{% block content %}
+    <!-- Content -->
+    <div class="content">
+        <font size=5>Ürün Ekleme</font>
+
+        <br><br>
+        <div class="content">
+            {{ include('admin/product/_form.html.twig') }}
+
+            <a href="{{ path('admin_product_index') }}" class="btn btn-info btn-sm">Listeye Dön</a>
+
+
+        </div>
+        <!-- /.gontent -->
+    </div>
+{% endblock %}
+

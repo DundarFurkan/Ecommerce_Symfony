@@ -1,0 +1,8 @@
+
+
+<form action="{{ path('admin_image_new', {'pid': pid }) }}" method="post" enctype="multipart/form-data">
+    Resim Seçiniz:
+    <input name="productid" type="hidden" value="{{ pid }}" type="number" readonly>
+    <input type="file"  name="imagename" id="fileToUpload"><br>
+    <input type="submit" value="Upload Image" name="submit">
+</form>

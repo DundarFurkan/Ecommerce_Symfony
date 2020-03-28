@@ -1,0 +1,28 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}New Orders{% endblock %}
+{% block sidebar %} {% include ('home/_usersidebar.html.twig') %} {% endblock %}
+{% block body %}
+
+
+    <div class="span9">
+        <ul class="breadcrumb">
+            <li><a href="{{ path('home') }}">Anasayfa</a> <span class="divider">/</span></li>
+            <li><a href="#">Order Items</a> <span class="divider">/</span></li>
+            <li class="active">Order Detail</li>
+        </ul>
+    </div>
+    <div class="row">
+
+        <div class="span9">
+
+
+            {{ include('orders/_form.html.twig') }}
+
+
+        </div>
+    </div>
+
+    </div> </div> </div>
+
+{% endblock %}

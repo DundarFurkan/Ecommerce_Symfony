@@ -1,0 +1,76 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %} Ürün Listesi {% endblock %}
+
+{% block content %}
+    <!-- Content -->
+    <div class="content">
+        <font size=6>Ürün Listesi </font>
+            <div class="pull-right"><a href="{{ path('admin_product_new') }}" class="btn btn-success btn-sm" >Ürün Ekleme</a></div>
+
+        <br><br>
+        <div class="table-stats order-table ov-h" align="left">
+            <table class="table " >
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Amount</th>
+                    <th>Detail</th>
+                    <th>Sprice</th>
+                    <th>Image</th>
+                    <th>Gallery</th>
+                    <th>Category_id</th>
+
+                    <th>Status</th>
+                    <th>Show</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.title }}</td>
+                        <td>{{ product.amount }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>{{ product.sprice }}</td>
+
+                        <td>
+                            <a href="javascript:openWin('{{ path('admin_product_iedit', {'id': product.id  }) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollBars=no,resizable=no,width=900,height=700');">
+                                {% if product.image==null %}
+                                    <img src="{{ url('admin') }}/resim/ekle.png" height="40">
+                                {% else %}
+                                    <img src="{{ asset('uploads') }}/images/{{ product.image }} "height="50" >
+
+                                {% endif %}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="javascript:openWin('{{ path('admin_image_new', {'pid': product.id  }) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollBars=no,resizable=no,width=900,height=700');">
+                                <img src="{{ url('admin') }}/galeri/gallery.png" height="40">
+                            </a>
+                        </td>
+                        <td>{{ product.categoryId }}</td>
+
+                        <td>{{ product.status }}</td>
+                        <td><a href="{{ path('admin_product_show', {'id': product.id}) }}"class="btn btn-success btn-sm">Show</a></td>
+                        <td><a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-warning btn-sm">Edit</a></td>
+                        <td>{{ include('admin/product/_delete_form.html.twig') }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="17">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <a href="{{ path('admin_product_new') }}" class="btn btn-success btn-sm">Create new</a>
+
+        </div>
+    </div>
+    <!-- /.content -->
+{% endblock %}
+

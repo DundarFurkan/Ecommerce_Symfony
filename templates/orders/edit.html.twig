@@ -1,0 +1,30 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Siparişlerim{% endblock %}
+{% block sidebar %} {% include ('home/_usersidebar.html.twig') %} {% endblock %}
+{% block body %}
+
+
+<div class="span9">
+    <ul class="breadcrumb">
+        <li><a href="{{ path('home') }}">Anasayfa</a> <span class="divider">/</span></li>
+        <li><a href="#">Orders</a> <span class="divider">/</span></li>
+        <li class="active">Order Detail</li>
+    </ul>
+</div>
+<div class="row">
+
+    <div class="span9">
+
+    {{ include('orders/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('orders_index') }}">back to list</a>
+
+    {{ include('orders/_delete_form.html.twig') }}
+    </div>
+</div>
+
+
+
+{% endblock %}
+

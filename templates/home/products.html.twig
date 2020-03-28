@@ -1,0 +1,97 @@
+{% extends 'frontbase.html.twig' %}
+
+
+{% block title %} {{ data[0].title}} {% endblock %}
+{% block keywords %} {{ data[0].keywords}} {% endblock %}
+{% block description %} {{ data[0].description}} {% endblock %}
+{% block sidebar %} {{    include ('home/_sidebar.html.twig')  }}    {% endblock %}
+
+{% block body %}
+
+
+                <!-- Sidebar ================================================== -->
+                <div id="sidebar" class="span3">
+
+                </div>
+                <!-- Sidebar end=============================================== -->
+                <div class="span9">
+                    <ul class="breadcrumb">
+                        <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+                        <li class="active"> {{ data[0].title}} </li>
+                    </ul>
+                    <h3>  {{ data[0].title}}  <small class="pull-right"> 40 products are available </small></h3>
+                    <hr class="soft">
+
+
+                    <form class="form-horizontal span6">
+                        <div class="control-group">
+                            <label class="control-label alignL">Sort By </label>
+                            <select>
+                                <option>Priduct name A - Z</option>
+                                <option>Priduct name Z - A</option>
+                                <option>Priduct Stoke</option>
+                                <option>Price Lowest first</option>
+                            </select>
+                        </div>
+                    </form>
+
+                    <div id="myTab" class="pull-right">
+                        <a href="#listView" data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
+                        <a href="#blockView" data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>
+                    </div>
+                    <br class="clr">
+
+                    <div class="tab-content">
+                        <div class="tab-pane" id="listView">
+
+                            <!-- kesilen yer -->
+
+                            <hr class="soft">
+                        </div>
+
+                        <div class="tab-pane  active" id="blockView" style=  >
+                            <ul class="thumbnails">
+                                {% for pr in products %}
+                                    <form name="shopcart" class="form-horizontal qtyFrm" action="{{ path ('shopcart_new') }}" method="post">
+                                        <li class="span3">
+                                            <div class="thumbnail">
+                                                <a  href="{{ path('product_detail',{'id': pr.id}) }}"><img src="{{ asset('uploads') }}/images/{{ pr.image }}" alt=""/></a>
+                                                <div class="caption">
+                                                    <h5>{{ pr.title }}</h5>
+                                                    <p>
+                                                        {{ pr.description }}
+                                                    </p>
+                                                    <input type="hidden" name="shopcart[quantity]" class="span1" placeholder="Adet." value="1" max="{{ pr.amount }}"/>
+                                                    <input type="hidden" name="shopcart[productid]"  value="{{ pr.id }}"/>
+
+                                                    <input type="hidden" name="token" value="{{ csrf_token('add.item') }}">
+
+
+                                                    <h4 style="text-align:center"><a class="btn" href="product_details.html">
+                                                            <i class="icon-zoom-in"></i></a><button type="submit" class="btn"> Add to cart <i class=" icon-shopping-cart"></i></button></a>
+                                                        <a class="btn btn-primary" href="#">{{ pr.sprice }}</a></h4>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </form>
+                                {% endfor %}
+
+
+
+                            </ul>
+                            <hr class="soft">
+                        </div>
+                    </div>
+
+                    <a href="compair.html" class="btn btn-large pull-right">Compair Product</a>
+
+                    <br class="clr">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+

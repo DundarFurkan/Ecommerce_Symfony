@@ -1,0 +1,108 @@
+
+<form action="" method="post" class="form-horizontal">
+    Kategori Seçiniz:
+    <div class="form-group">
+        <div class="input-group" >
+            <div class="input-group-addon" ><i class="fa fa-user"></i></div>
+
+            <select name="product[category_id]"  class="form-control">
+                {% if (catname) %}
+                <option value="{{ product.categoryid }}">{{ catname[0].title}}</option>
+                {% endif %}
+
+                {% for cat in catlist %}
+
+                    <option value="{{ cat.id }}">{{ cat.title }}</option>
+                {% endfor %}
+
+            </select>
+        </div>
+    </div>
+    Ürün Adı:
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+
+            <input type="text" name="product[title]"   value="{{ product.title }}" placeholder="Title" class="form-control">
+        </div>
+    </div>
+
+    Ürün Miktarı:
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+
+            <input type="text" name="product[amount]"   value="{{ product.amount }}" placeholder="amount" class="form-control">
+        </div>
+    </div>
+    Alış Fiyatı:
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+            <input type="text"  name="product[price]"  value="{{ product.price }}" placeholder="price" class="form-control">
+        </div>
+    </div>
+    Satış Fiyatı
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+            <input type="text" name="product[sprice]"  value="{{ product.sprice }}" placeholder="sprice" class="form-control">
+        </div>
+
+
+    </div>
+    Kategori(id):
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+            <input type="text" name="product[category_id]"  value="{{ product.categoryid }}" placeholder="categoryid" class="form-control">
+        </div>
+
+
+    </div>
+    User(id):
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+            <input type="text" name="product[user_id]"  value="{{ product.userid }}" placeholder="userid" class="form-control">
+        </div>
+
+
+    </div>
+    Status:
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+            <input type="text" name="product[status]"  value="{{ product.status }}" placeholder="status" class="form-control">
+        </div>
+
+
+    </div>
+    Detaylar:
+    <div class="form-group">
+        <div class="input-group">
+            <textarea name="product[detail]" id="editor">{{ product.detail }}</textarea>
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">Submit</button></div>
+
+
+
+
+
+</form>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>

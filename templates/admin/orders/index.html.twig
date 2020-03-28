@@ -1,0 +1,58 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Yeni Siparişler{% endblock %}
+
+{% block content %}
+    <!-- Content -->
+    <div class="content">
+        <font size=5>Yeni Siparişler Detay</font>
+
+        <br><br>
+        <div class="table-stats order-table ov-h">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Userid</th>
+                    <th>Amount</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Phone</th>
+                    <th>Shipinfo</th>
+                    <th>Status</th>
+                    <th>Note</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.userid }}</td>
+                        <td>{{ order.amount }}</td>
+                        <td>{{ order.name }}</td>
+                        <td>{{ order.address }}</td>
+                        <td>{{ order.city }}</td>
+                        <td>{{ order.phone }}</td>
+                        <td>{{ order.shipinfo }}</td>
+                        <td>{{ order.status }}</td>
+                        <td>{{ order.note }}</td>
+                        <td>
+                            <a href="{{ path('admin_orders_show', {'id': order.id}) }}">show</a>
+
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="11">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+    <!-- /.content -->
+{% endblock %}

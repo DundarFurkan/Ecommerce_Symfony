@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Shopcart{% endblock %}
+
+{% block body %}
+
+
+    {{ include('shopcart/_form.html.twig') }}
+
+  {{ path('shopcart_index') }}
+
+{% endblock %}

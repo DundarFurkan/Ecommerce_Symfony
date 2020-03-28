@@ -1,0 +1,53 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %} Üye Listesi {% endblock %}
+
+{% block content %}
+    <!-- Content -->
+    <div class="content">
+        <font size=5>Üye Listesi</font>
+        <div class="pull-right"> <a href="{{ path('admin_user_new') }}" class="btn btn-success btn-sm">Üye Ekleme</a></div>
+
+        <br><br>
+        <div class="table-stats order-table ov-h">
+            <table class="table ">
+                <thead>
+                <tr>
+
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+
+                    <th>Type</th>
+                    <th>Status</th>
+
+                    <th>Edit</th>
+                    <th>Delete</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for row in user %}
+                    <tr>
+                        <td>{{ row.id }}</td>
+                        <td>{{ row.name }}</td>
+                        <td>{{ row.email }}</td>
+
+                        <td>
+                            {% for item in row.roles %}
+                                {{ item }}
+                            {% endfor %}
+                        </td>
+                        <td>{{ row.status }}</td>
+
+                        <td><a href="{{ path('admin_user_edit',{'id':row.id}) }}"><button type="button" class="btn btn-warning btn-sm">Düzenle</button></a></td>
+                        <td><a href="{{ path('admin_user_delete',{'id':row.id}) }}"><button type="button" onclick="return confirm('Silinecek Emin misiniz?' );" class="btn btn-danger btn-sm">SİL</button></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- /.content -->
+{% endblock %}
